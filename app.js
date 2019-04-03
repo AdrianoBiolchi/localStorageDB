@@ -1,8 +1,15 @@
 (function(){
 	var lib = new localStorageDB("bancodedados", localStorage);
 	var task = document.getElementById('task');
-	var btn = document.getElementById('btn');
+	var btn = document.getElementById('btn-cadastrar');
 	var list = document.getElementById("list");
+	var limpar_campos = document.getElementById('btn-limpar');
+	limpar_campos.addEventListener('click', function(){
+		if (limpar_campos) {
+			localStorage.clear();
+			location.reload();
+		}
+	}, false);
 
 	if(lib.isNew()){
 		lib.createTable("tasks", ["name"]);
@@ -17,6 +24,8 @@
 	}, false);
 
 	
+	
+		
 	function listAll(){
 		var taskList = lib.queryAll("tasks");
 		list.innerHTML = "";
